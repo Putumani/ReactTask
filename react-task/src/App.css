@@ -27,7 +27,10 @@ body {
   align-items: flex-start;
   padding: 20px;
   width: 100%;
+  height: 100vh; /* Set the height to fill the entire viewport */
+  overflow: auto; /* Add overflow for scrolling if content exceeds viewport height */
 }
+
 
 .form-header {
   font-size: 18px;
@@ -40,6 +43,12 @@ body {
   align-items: flex-start;
   margin-bottom: 50px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 10), 2px 2px 4px rgba(0, 0, 0, 10);
+  transition: transform 0.2s; 
+  transform: translate(0, 0);
+}
+
+.input-container.is-dragging {
+  transform: translate(var(--deltaX, 0px), var(--deltaY, 0px));
 }
 
 .input-box {
@@ -68,7 +77,18 @@ body {
 .triangle {
   font-size: 14px;
   padding: 5px;
+  cursor: pointer;
 }
+
+.triangle.dragging {
+  cursor: grab;
+}
+
+.input-container.dragging {
+  opacity: 0.5;
+  cursor: grabbing;
+}
+
 
 .add-section-container {
   display: flex;
@@ -86,6 +106,7 @@ body {
 .add-sign {
   font-size: 14px;
   padding: 5px 10px;
+  cursor: pointer;
 }
 
 .add-section {
@@ -94,16 +115,17 @@ body {
   color: black;
   border: none;
   padding: 5px 10px;
-  cursor: pointer;
 }
 
 .section-container {
   text-align: left;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 .section {
   border: 1px solid black;
   padding: 10px;
   margin-bottom: 10px;
-  width: 100%;
+  width: 1000%;
 }
