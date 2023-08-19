@@ -1,0 +1,94 @@
+/* App.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.form-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.input-container {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 10), 2px 2px 4px rgba(0, 0, 0, 10); /* Adjusted shadow */
+}
+
+.input-box {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
+
+.text-input-1 {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 5px;
+  background-color: #007bff;
+  color: black;
+}
+
+.text-input-2 {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 5px;
+  color: black;
+}
+
+.triangle {
+  font-size: 14px;
+  padding: 5px;
+}
+
+.add-section-container {
+  display: flex;
+  align-items: flex-start;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 10), 2px 2px 4px rgba(0, 0, 0, 10); /* Adjusted shadow */
+}
+
+.add-section-box {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-sign {
+  font-size: 14px;
+  padding: 5px 10px;
+}
+
+.add-section {
+  font-size: 14px;
+  background-color: #007bff;
+  color: black;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.section-container {
+  text-align: left;
+}
+
+.section {
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 10px;
+}
