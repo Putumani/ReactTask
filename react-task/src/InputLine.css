@@ -1,0 +1,44 @@
+.input-container {
+    display: flex;
+    align-items: flex-start;
+    transition: transform 0.2s; 
+    transform: translate(0, 0);
+  }
+  
+  .input-box {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .text-input-1 {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    padding: 5px;
+    background-color: #9CBCED;
+    color: black;
+  }
+  
+  .text-input-2 {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    padding: 5px;
+    color: black;
+  }
+  
+  .triangle {
+    font-size: 14px;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .triangle.dragging {
+    cursor: grab;
+  }
+  
+  .input-container.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+  }
