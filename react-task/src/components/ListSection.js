@@ -3,7 +3,7 @@ import { Droppable, Draggable } from 'react-beautiful-dnd';
 
 const ListSection = ({ listId, items }) => {
   return (
-    <Droppable droppableId={listId}>
+    <Droppable droppableId={listId} isDropDisabled={items.length >= 1}>
       {(provided, snapshot) => (
         <div
           ref={provided.innerRef}
@@ -42,6 +42,4 @@ const ListSection = ({ listId, items }) => {
   );
 };
 
-export default ListSection; 
-
-
+export default ListSection;
