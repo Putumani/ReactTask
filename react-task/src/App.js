@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { DragDropContext } from 'react-beautiful-dnd';
-import './App.css';
 import InputLine from './components/InputLine';
 import AddSection from './components/AddSection';
 import ListSection from './components/ListSection'; 
+import './App.css';
 
 
 const reorder = (list, startIndex, endIndex) => {
@@ -119,7 +119,7 @@ class App extends Component {
   });
 };
 
-  addList = (e) => {
+  addList = () => {
     this.setState((prevState) => ({
       sections: [...prevState.sections, { id: uuidv4(), items: [] }],
     }));
@@ -132,14 +132,7 @@ class App extends Component {
         <div className="form-header">Form</div>
         <DragDropContext onDragEnd={this.onDragEnd}>
           <InputLine />
-          <AddSection addList={this.addList} />
-          {this.state.sections.map((section, index) => (
-            <ListSection
-              key={section.id}
-              listId={section.id}
-              items={section.items} 
-            />
-          ))}
+          <AddSection addList={this.addList} sections={this.state.sections} />
         </DragDropContext>
       </div>
     );

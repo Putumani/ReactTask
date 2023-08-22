@@ -1,40 +1,40 @@
 .add-section-container {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 5px;
-   }
-  
-  .add-section-box {
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .add-sign {
-    font-size: 14px;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  .add-section {
-    font-size: 14px;
-    background-color: #9CBCED;
-    color: black;
-    border: none;
-    padding: 5px 10px;
-  }
-  
-  .section-container {
-    text-align: left;
-    margin-top: 10px; 
-    height: calc(100vh - 200px); 
-  }
-  
-  .section {
-    border: 1px solid black;
-    padding: 10px;
-    margin-bottom: 100px;
-    width: 70%;
-  }
-  
-  
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 5px;
+ }
+
+.add-section-box {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-sign {
+  font-size: 14px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.add-section {
+  font-size: 14px;
+  background-color: #9CBCED;
+  color: black;
+  border: none;
+  padding: 5px 10px;
+}
+
+.section-container {
+  text-align: left;
+  margin-top: 10px; 
+  height: calc(100vh - 200px); 
+}
+
+.header-section {
+  background-color: #f0f0f0;
+  padding: 10px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+

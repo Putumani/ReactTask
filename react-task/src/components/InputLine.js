@@ -1,5 +1,6 @@
 import React from 'react';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
+import '../InputLine.css'
 
 const InputLine = () => {
   return (
