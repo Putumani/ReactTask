@@ -1,8 +1,8 @@
 import React, { useState } from 'react'; 
 import '../AddSection.css';
 
-const AddSection = () => {
-    const [sections, setSections] = useState([]);
+const AddSection = ({ addList }) => {
+  const [sections, setSections] = useState([]);
 
     const handleAddSection = () => {
         const newSectionId = sections.length + 1;
@@ -10,14 +10,14 @@ const AddSection = () => {
         setSections(prevSections => [...prevSections, newSection]);
     };
 
-return (
+  return (
     <div className="section-container">
         <div className="add-section-container">
         <div className="add-section-box">
             <div className="add-section">Add Section</div>
         </div>
         <div className="add-section-box">
-            <div className="add-sign" onClick={handleAddSection}>
+            <div className="add-sign" onClick={addList}>
             +
             </div>
         </div>
