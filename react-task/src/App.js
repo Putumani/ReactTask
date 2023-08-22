@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { DragDropContext } from 'react-beautiful-dnd';
 import InputLine from './components/InputLine';
 import AddSection from './components/AddSection';
-import ListSection from './components/ListSection'; 
 import './App.css';
 
 
