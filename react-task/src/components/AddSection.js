@@ -16,11 +16,15 @@ const AddSection = ({ addList, sections }) => {
         </div>
       </div>
       {sections.map((section, index) => (
-        <div key={section.id}>
-          <div className="section-header">Section {index + 1}</div>
-          <ListSection key={section.id} listId={section.id} items={section.items} />
-        </div>
-      ))}
+      <div key={section.id}>
+        <ListSection
+          key={section.id}
+          listId={section.id}
+          items={section.items}
+          sectionIndex={index} 
+        />
+      </div>
+    ))}
     </div>
   );
 };

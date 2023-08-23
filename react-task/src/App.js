@@ -32,29 +32,34 @@ const copy = (source, destination, droppableSource, droppableDestination) => {
 
 
 
-const move = (source, destination, droppableSource, droppableDestination) => {
-  const sourceClone = Array.from(source.items); 
-  const destClone = Array.from(destination.items); 
-  const [removed] = sourceClone.splice(droppableSource.index, 1);
+const move = (
+  sourceSection,
+  destSection,
+  sourceIndex,
+  destIndex
+) => {
+  const sourceClone = Array.from(sourceSection.items);
+  const destClone = Array.from(destSection.items);
+  const [movedItem] = sourceClone.splice(sourceIndex, 1);
 
-  destClone.splice(droppableDestination.index, 0, removed);
+  destClone.splice(destIndex, 0, movedItem);
 
   const updatedSource = {
-    ...source,
+    ...sourceSection,
     items: sourceClone,
   };
 
-  const updatedDestination = {
-    ...destination,
+  const updatedDest = {
+    ...destSection,
     items: destClone,
   };
 
-  const result = {};
-  result[droppableSource.droppableId] = updatedSource;
-  result[droppableDestination.droppableId] = updatedDestination;
-
-  return result;
+  return {
+    source: updatedSource,
+    destination: updatedDest,
+  };
 };
+
 
 
 const InputLiner = {
@@ -74,49 +79,32 @@ class App extends Component {
       sections: [],
   };
   
- onDragEnd = (result) => {
-  const { source, destination } = result;
-
-  if (!destination) {
-    return;
-  }
-
-  const sections = this.state.sections.slice(); 
-
-  switch (source.droppableId) {
-    case destination.droppableId:
-      sections.forEach((section) => {
-        if (section.id === source.droppableId) {
-          section.items = reorder(section.items, source.index, destination.index);
-        }
-      });
-      break;
-    case 'InputLiner':
-      sections.forEach((section) => {
-        if (section.id === destination.droppableId) {
-          section.items = copy(InputLiner, section, source, destination).items;
-        }
-      });
-      break;
-    default:
-      sections.forEach((section) => {
-        if (section.id === source.droppableId || section.id === destination.droppableId) {
-          const updatedSections = move(
-            section,
-            section,
-            source,
-            destination
-          );
-          section.items = updatedSections[section.id].items;
-        }
-      });
-      break;
-  }
-
-  this.setState({
-    sections: sections, 
-  });
-};
+  onDragEnd = (result) => {
+    const { source, destination } = result;
+  
+    if (!destination) {
+      return;
+    }
+  
+    const sections = this.state.sections.slice();
+    const sourceSection = sections.find((section) => section.id === source.droppableId);
+    const destSection = sections.find((section) => section.id === destination.droppableId);
+  
+    if (source.droppableId === destination.droppableId) {
+      sourceSection.items = reorder(sourceSection.items, source.index, destination.index);
+    } else if (source.droppableId === 'InputLiner') {
+      destSection.items.splice(destination.index, 0, InputLiner.items[0]);
+    } else {
+      const updatedSections = move(sourceSection, destSection, source.index, destination.index);
+      sourceSection.items = updatedSections.source.items;
+      destSection.items = updatedSections.destination.items;
+    }
+  
+    this.setState({
+      sections: sections,
+    });
+  };
+  
 
   addList = () => {
     this.setState((prevState) => ({
